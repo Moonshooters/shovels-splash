@@ -177,17 +177,17 @@ USER splash:splash
 VOLUME [ \
     "/etc/splash/proxy-profiles", \
     "/etc/splash/js-profiles", \
-    "/etc/splash/filters", \
+    #"/etc/splash/filters", \
     "/etc/splash/lua_modules" \
 ]
 
-EXPOSE 8050
+#EXPOSE 8050
 
-ENTRYPOINT [ \
+CMD [ \
     "python3", \
     "/app/bin/splash", \
     "--proxy-profiles-path", "/etc/splash/proxy-profiles", \
     "--js-profiles-path", "/etc/splash/js-profiles", \
     "--filters-path", "/etc/splash/filters", \
-    "--lua-package-path", "/etc/splash/lua_modules/?.lua" \
+    "--lua-package-path", "/etc/splash/lua_modules/?.lua --port $PORT" \
 ]
